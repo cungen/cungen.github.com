@@ -17,6 +17,9 @@ author:
     twitter: Jcungen
     feedburner:
 
+# pagination
+paginate: 5
+
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt
 # Most places will/should use BASE_PATH to make the urls
@@ -34,8 +37,6 @@ MD:
     BASE_PATH: false
     ASSET_PATH: false
 
-    # pagination
-    paginate: 5
 
     # These paths are to the main pages Jekyll-Bootstrap ships with.
     archive_path: /archive.html

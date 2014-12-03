@@ -14,7 +14,7 @@ CONFIG = {
 }
 
 # Path configuration helper
-module JB
+module MD
   class Path
     SOURCE = "."
     Paths = {
@@ -24,7 +24,7 @@ module JB
       :theme_packages => "_theme_packages",
       :posts => "_posts"
     }
-    
+
     def self.base
       SOURCE
     end
@@ -36,9 +36,9 @@ module JB
       path.compact!
       File.__send__ :join, path
     end
-  
+
   end #Path
-end #JB
+end #MD
 
 # Usage: rake post title="A Title" [date="2012-02-09"] [tags=[tag1,tag2]] [category="category"]
 desc "Begin a new post in #{CONFIG['posts']}"
@@ -59,7 +59,7 @@ task :post do
   if File.exist?(filename)
     abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
   end
-  
+
   puts "Creating new post: #{filename}"
   open(filename, 'w') do |post|
     post.puts "---"
@@ -69,7 +69,7 @@ task :post do
     post.puts "category: #{category}"
     post.puts "tags: #{tags}"
     post.puts "---"
-    post.puts "{% include JB/setup %}"
+    post.puts "{% include MD/setup %}"
   end
 end # task :post
 
@@ -85,7 +85,7 @@ task :page do
   if File.exist?(filename)
     abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
   end
-  
+
   mkdir_p File.dirname(filename)
   puts "Creating new page: #{filename}"
   open(filename, 'w') do |post|
@@ -94,7 +94,7 @@ task :page do
     post.puts "title: \"#{title}\""
     post.puts 'description: ""'
     post.puts "---"
-    post.puts "{% include JB/setup %}"
+    post.puts "{% include MD/setup %}"
   end
 end # task :page
 
@@ -107,11 +107,11 @@ end # task :preview
 task :switch_theme => "theme:switch"
 
 namespace :theme do
-  
+
   # Public: Switch from one theme to another for your blog.
   #
   # name - String, Required. name of the theme you want to switch to.
-  #        The theme must be installed into your JB framework.
+  #        The theme must be installed into your MD framework.
   #
   # Examples
   #
@@ -142,16 +142,16 @@ namespace :theme do
           page.puts "---"
           page.puts "layout: default"
           page.puts "---"
-        end 
-        page.puts "{% include JB/setup %}"
-        page.puts "{% include themes/#{theme_name}/#{File.basename(filename)} %}" 
+        end
+        page.puts "{% include MD/setup %}"
+        page.puts "{% include themes/#{theme_name}/#{File.basename(filename)} %}"
       end
     end
-    
+
     puts "=> Theme successfully switched!"
     puts "=> Reload your web-page to check it out =)"
   end # task :switch
-  
+
   # Public: Install a theme using the theme packager.
   # Version 0.1.0 simple 1:1 file matching.
   #
@@ -174,32 +174,32 @@ namespace :theme do
       name = ENV["name"].to_s.downcase
     end
 
-    packaged_theme_path = JB::Path.build(:theme_packages, :node => name)
-    
+    packaged_theme_path = MD::Path.build(:theme_packages, :node => name)
+
     abort("rake aborted!
       => ERROR: 'name' cannot be blank") if name.empty?
-    abort("rake aborted! 
+    abort("rake aborted!
       => ERROR: '#{packaged_theme_path}' directory not found.
       => Installable themes can be added via git. You can find some here: http://github.com/jekyllbootstrap
       => To download+install run: `rake theme:install git='[PUBLIC-CLONE-URL]'`
       => example : rake theme:install git='git@github.com:jekyllbootstrap/theme-the-program.git'
     ") unless FileTest.directory?(packaged_theme_path)
-    
+
     manifest = verify_manifest(packaged_theme_path)
-    
+
     # Get relative paths to packaged theme files
     # Exclude directories as they'll be recursively created. Exclude meta-data files.
     packaged_theme_files = []
     FileUtils.cd(packaged_theme_path) {
-      Dir.glob("**/*.*") { |f| 
+      Dir.glob("**/*.*") { |f|
         next if ( FileTest.directory?(f) || f =~ /^(manifest|readme|packager)/i )
-        packaged_theme_files << f 
+        packaged_theme_files << f
       }
     }
-    
+
     # Mirror each file into the framework making sure to prompt if already exists.
     packaged_theme_files.each do |filename|
-      file_install_path = File.join(JB::Path.base, filename)
+      file_install_path = File.join(MD::Path.base, filename)
       if File.exist? file_install_path and ask("#{file_install_path} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
         next
       else
@@ -207,7 +207,7 @@ namespace :theme do
         cp_r File.join(packaged_theme_path, filename), file_install_path
       end
     end
-    
+
     puts "=> #{name} theme has been installed!"
     puts "=> ---"
     if ask("=> Want to switch themes now?", ['y', 'n']) == 'y'
@@ -216,11 +216,11 @@ namespace :theme do
   end
 
   # Public: Package a theme using the theme packager.
-  # The theme must be structured using valid JB API.
+  # The theme must be structured using valid MD API.
   # In other words packaging is essentially the reverse of installing.
   #
   # name - String, Required name of the theme you want to package.
-  #        
+  #
   # Examples
   #
   #   rake theme:package name="twitter"
@@ -229,32 +229,32 @@ namespace :theme do
   desc "Package theme"
   task :package do
     name = ENV["name"].to_s.downcase
-    theme_path = JB::Path.build(:themes, :node => name)
-    asset_path = JB::Path.build(:theme_assets, :node => name)
+    theme_path = MD::Path.build(:themes, :node => name)
+    asset_path = MD::Path.build(:theme_assets, :node => name)
 
     abort("rake aborted: name cannot be blank") if name.empty?
     abort("rake aborted: '#{theme_path}' directory not found.") unless FileTest.directory?(theme_path)
     abort("rake aborted: '#{asset_path}' directory not found.") unless FileTest.directory?(asset_path)
-    
+
     ## Mirror theme's template directory (_includes)
-    packaged_theme_path = JB::Path.build(:themes, :root => JB::Path.build(:theme_packages, :node => name))
+    packaged_theme_path = MD::Path.build(:themes, :root => MD::Path.build(:theme_packages, :node => name))
     mkdir_p packaged_theme_path
     cp_r theme_path, packaged_theme_path
-    
+
     ## Mirror theme's asset directory
-    packaged_theme_assets_path = JB::Path.build(:theme_assets, :root => JB::Path.build(:theme_packages, :node => name))
+    packaged_theme_assets_path = MD::Path.build(:theme_assets, :root => MD::Path.build(:theme_packages, :node => name))
     mkdir_p packaged_theme_assets_path
     cp_r asset_path, packaged_theme_assets_path
 
     ## Log packager version
     packager = {"packager" => {"version" => CONFIG["theme_package_version"].to_s } }
-    open(JB::Path.build(:theme_packages, :node => "#{name}/packager.yml"), "w") do |page|
+    open(MD::Path.build(:theme_packages, :node => "#{name}/packager.yml"), "w") do |page|
       page.puts packager.to_yaml
     end
-    
-    puts "=> '#{name}' theme is packaged and available at: #{JB::Path.build(:theme_packages, :node => name)}"
+
+    puts "=> '#{name}' theme is packaged and available at: #{MD::Path.build(:theme_packages, :node => name)}"
   end
-  
+
 end # end namespace :theme
 
 # Internal: Download and process a theme from a git url.
@@ -262,13 +262,13 @@ end # end namespace :theme
 # So we'll have to change the folder name once we get the name.
 #
 # url - String, Required url to git repository.
-#        
+#
 # Returns theme manifest hash
 def theme_from_git_url(url)
-  tmp_path = JB::Path.build(:theme_packages, :node => "_tmp")
+  tmp_path = MD::Path.build(:theme_packages, :node => "_tmp")
   abort("rake aborted: system call to git clone failed") if !system("git clone #{url} #{tmp_path}")
   manifest = verify_manifest(tmp_path)
-  new_path = JB::Path.build(:theme_packages, :node => manifest["name"])
+  new_path = MD::Path.build(:theme_packages, :node => manifest["name"])
   if File.exist?(new_path) && ask("=> #{new_path} theme package already exists. Override?", ['y', 'n']) == 'n'
     remove_dir(tmp_path)
     abort("rake aborted: '#{manifest["name"]}' already exists as theme package.")
@@ -282,7 +282,7 @@ end
 # Internal: Process theme package manifest file.
 #
 # theme_path - String, Required. File path to theme package.
-#        
+#
 # Returns theme manifest hash
 def verify_manifest(theme_path)
   manifest_path = File.join(theme_path, "manifest.yml")
