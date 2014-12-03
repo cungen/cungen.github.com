@@ -1,0 +1,8 @@
+{% if site.safe and site.MD.analytics.provider and page.MD.analytics != false %}
+
+{% case site.MD.analytics.provider %}
+{% when 'cnzz' %}
+    {% include MD/analytics-providers/cnzz %}
+{% endcase %}
+
+{% endif %}

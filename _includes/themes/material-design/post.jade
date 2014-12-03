@@ -1,0 +1,45 @@
+.page-header
+    h1 {{ page.title }}
+        | {% if page.tagline %}
+        small {{ page.tagline }}
+        | {% endif %}
+.row.post-full
+    .col-xs-12
+        .date
+            span {{ page.date | date_to_long_string }}
+        .content {{ content }}
+
+        | {% unless page.categories == empty %}
+        ul.tag_box.inline
+            li: i.glyphicon.glyphicon-open
+            | {% assign categories_list = page.categories %}
+            | {% include MD/categories_list %}
+        | {% endunless %}
+
+        | {% unless page.tags == empty %}
+        ul.tag_box.inline
+            li: i.glyphicon.glyphicon-tags
+            | {% assign tags_list = page.tags %}
+            | {% include MD/tags_list %}
+        | {% endunless %}
+
+        hr
+        ul.pagination
+            | {% if page.previous %}
+            li.prev
+                a(href='{{ BASE_PATH }}{{ page.previous.url }}', title='{{ page.previous.title }}') &laquo; Previous
+            | {% else %}
+            li.prev.disabled
+                a &larr; Previous
+            | {% endif %}
+            li
+                a(href='{{ BASE_PATH }}{{ site.MD.archive_path }}') Archive
+            | {% if page.next %}
+            li.next
+                a(href='{{ BASE_PATH }}{{ page.next.url }}', title='{{ page.next.title }}') Next &raquo;
+            | {% else %}
+            li.next.disabled
+                a Next &rarr;
+            | {% endif %}
+        hr
+        | {% include MD/comments %}

@@ -1,0 +1,59 @@
+mixin ie(condition)
+    | <!--[!{condition}]>
+    block
+    | <![endif]-->
+doctype html
+head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title {{page.title}}
+    | {% if page.description %}
+    meta(name='description', content='{{ page.description }}')
+    | {% endif %}
+    meta(name='author', content='{{ site.author.name }}')
+
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+    link(href='{{ ASSET_PATH }}/bootstrap/css/bootstrap.min.css' rel='stylesheet')
+    link(href='{{ ASSET_PATH }}/bootstrap/css/bs-sticky-footer.css' rel='stylesheet')
+
+    +ie('if lt IE 9')
+        script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+        script(src='https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js')
+    // Fav and touch icons
+    // Update these with your own images
+        <link rel='shortcut icon' href='images/favicon.ico'>
+        <link rel='apple-touch-icon' href='images/apple-touch-icon.png'>
+        <link rel='apple-touch-icon' sizes='72x72' href='images/apple-touch-icon-72x72.png'>
+        <link rel='apple-touch-icon' sizes='114x114' href='images/apple-touch-icon-114x114.png'>
+
+    // atom & rss feed
+    link(href='{{ BASE_PATH }}{{ site.MD.atom_path }}', type='application/atom+xml', rel='alternate', title='Sitewide ATOM Feed')
+    link(href='{{ BASE_PATH }}{{ site.MD.rss_path }}', type='application/rss+xml', rel='alternate', title='Sitewide RSS Feed')
+body
+    #wrap
+        nav.navbar.navbar-inverse(role='navigation')
+            .navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='#md-navbar-collapse')
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href='{{ HOME_PATH }}') {{ site.title }}
+            .collapse.navbar-collapse#md-navbar-collapse
+                ul.nav.navbar-nav
+                    | {% assign pages_list = site.pages %}
+                    | {% assign group = 'navigation' %}
+                    | {% include MD/pages_list %}
+        .container {{ content }}
+    #footer
+        .container
+            p
+                | &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
+                | with help from <a href="http://jekyllbootstrap.com" target="_blank"
+                | title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+                | and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+    | {% include MD/analytics %}
+
+    script(src='http://cdn.bootcss.com/jquery/1.10.2/jquery.js')
+    script(src='{{ ASSET_PATH }}/bootstrap/js/bootstrap.min.js')
