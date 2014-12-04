@@ -4,7 +4,7 @@
 
 | <!--comment to separate the layout -->
 .row
-    .col-xs-8
+    .col-md-8
         | {% for post in paginator.posts %}
         .panel.panel-default
             .panel-heading
@@ -23,7 +23,7 @@
                 | {% endunless %}
                 span.date.pull-right {{ post.date | date: '%F %R %p' }}
         | {% endfor %}
-    .col-xs-4
+    .col-md-4
         | {% unless site.categories == empty %}
         ul.list-group
             | {% assign categories_list = site.categories %}
