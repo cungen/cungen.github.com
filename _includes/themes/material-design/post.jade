@@ -1,3 +1,12 @@
+ul.breadcrumb
+    li
+        a(href='/')
+            i.fa.fa-home.fa-fw
+            | Home
+    | {% assign categories_list = page.categories %}
+    | {% include MD/categories_list %}
+    li.active {{ page.title }}
+
 .page-header
     h1 {{ page.title }}
         | {% if page.tagline %}
@@ -11,14 +20,14 @@
 
         | {% unless page.categories == empty %}
         ul.tag_box.inline
-            li: i.glyphicon.glyphicon-open
+            li: i.fa.fa-sitemap.fa-fw
             | {% assign categories_list = page.categories %}
             | {% include MD/categories_list %}
         | {% endunless %}
 
         | {% unless page.tags == empty %}
         ul.tag_box.inline
-            li: i.glyphicon.glyphicon-tags
+            li: i.fa.fa-tags.fa-fw
             | {% assign tags_list = page.tags %}
             | {% include MD/tags_list %}
         | {% endunless %}

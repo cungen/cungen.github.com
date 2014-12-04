@@ -1,0 +1,98 @@
+/*------------------------------------------------------------------
+  [ plugins ]
+
+.timeline
+    position: relative
+    &:after
+        content: ''
+        display: block
+        position: absolute
+        top: 0
+        left: 50%
+        height: 100%
+        width: 0
+        margin-left: -1px
+        border-left: 2px solid $blue
+    .year
+        position: relative
+        z-index: 99
+        left: 50%
+        width: 50px
+        height: 50px
+        line-height: 50px
+        font-size: 17px
+        margin-left: -25px
+        text-align: center
+        +border-radius(100%)
+        +gradient($blue + 15, $blue - 15)
+        +box-shadow(0 0 8px 1px rgba(0, 0, 0, 0.3))
+        color: #ffffff
+    .month
+        position: absolute
+        z-index: 99
+        left: 50%
+        width: 16px
+        height: 16px
+        text-indent: -100px
+        margin-left: -8px
+        overflow: hidden
+        +border-radius(100%)
+        +gradient($blue + 15, $blue - 15)
+        +box-shadow(0 0 2px 1px rgba(0, 0, 0, 0.3))
+    ul.list-group
+        position: relative
+        width: 50%
+        padding-right: 18px
+        .list-group-header
+            font-weight: bold
+            color: $grey
+            &:after
+                content: ''
+                position: absolute
+                width: 12px
+                height: 12px
+                background-color: #ffffff
+                border: 1px solid transparent
+                border-top-color: $border-color-grey
+                border-right-color: $border-color-grey
+                right: -6px
+                top: 20px
+                z-index: 99
+                +transform(rotate(45deg))
+        li
+            span
+                display: none
+    ul:nth-of-type(2n)
+        left: 50%
+        padding-right: 0
+        padding-left: 18px
+        .list-group-header
+            &:after
+                left: -6px
+                right: auto
+                border-top-color: transparent
+                border-right-color: transparent
+                border-bottom-color: $border-color-grey
+                border-left-color: $border-color-grey
+// media query
+@media screen and (max-width: 640px)
+    .timeline
+        &:after
+            left: 25px
+        .year
+            left: 25px
+        .month
+            left: 25px
+        ul.list-group, ul:nth-of-type(2n)
+            left: 0
+            width: 100%
+            padding-right: 0
+            padding-left: 43px
+            .list-group-header
+                &:after
+                    left: -6px
+                    right: auto
+                    border-top-color: transparent
+                    border-right-color: transparent
+                    border-bottom-color: $border-color-grey
+                    border-left-color: $border-color-grey

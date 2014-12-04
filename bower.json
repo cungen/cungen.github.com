@@ -1,0 +1,13 @@
+{
+  "name": "cungen.github.com",
+  "version": "0.0.0",
+  "homepage": "http://cungen.github.io/",
+  "authors": [
+    "Cungen <1360571582@qq.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "fontawesome": "~4.2.0"
+  }
+}

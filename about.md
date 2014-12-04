@@ -1,6 +1,6 @@
 ---
 layout: page
-title: about
+title: About
 header : About
 group: navigation
 weight: 5

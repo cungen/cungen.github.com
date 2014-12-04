@@ -1,3 +1,9 @@
+ul.breadcrumb
+    li
+        a(href='/')
+            i.fa.fa-home.fa-fw
+            | Home
+    li.active {{ page.title }}
 .page-header
     h1 {{ page.title }}
         | {% if page.tagline %}
