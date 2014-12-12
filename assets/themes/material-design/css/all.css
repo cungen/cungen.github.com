@@ -16,14 +16,41 @@
 /*------------------------------------------------------------------
  * [ variables ] */
 /*------------------------------------------------------------------
- * [ theme ] */
+ * [ 3. theme ] */
 html {
   height: 100%; }
 
 body {
   height: 100%; }
 
-.navbar-nav li:last-child {
+a {
+  color: #d47624; }
+
+a:hover, a:focus {
+  color: #74a24c; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #76664d; }
+
+.page-header {
+  border-bottom: 1px dashed #5c6a74; }
+
+.navbar.navbar-inverse {
+  background-color: #5c6a74;
+  border-color: #d47624; }
+  .navbar.navbar-inverse .active > a {
+    background-color: #74a24c; }
+    .navbar.navbar-inverse .active > a:hover {
+      background-color: #74a24c; }
+  .navbar.navbar-inverse li > a, .navbar.navbar-inverse a {
+    color: rgba(255, 255, 255, 0.7); }
+  .navbar.navbar-inverse .navbar-toggle {
+    border-color: transparent; }
+    .navbar.navbar-inverse .navbar-toggle:hover, .navbar.navbar-inverse .navbar-toggle:focus {
+      background-color: #74a24c; }
+  .navbar.navbar-inverse .navbar-collapse {
+    border-color: #d47624; }
+.navbar li:last-child {
   margin-right: 15px; }
 
 .sub-container {
@@ -111,7 +138,24 @@ body {
   font-size: 0.8em; }
 
 /*------------------------------------------------------------------
- * [ index ] */
+ * [ 4.index ] */
+.wrap-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #eeeeee url("../imgs/bg.png") repeat-x; }
+  .wrap-container .wrap {
+    height: 100%;
+    background-color: #ffffff;
+    margin-bottom: -34px;
+    padding-top: 70px;
+    padding-bottom: 34px;
+    overflow: auto;
+    zoom: 1;
+    -webkit-box-shadow: 0 4px 6px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 4px 6px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 6px 2px rgba(0, 0, 0, 0.3); }
+
 .tag_box {
   display: inline-block;
   list-style: none;
@@ -129,6 +173,17 @@ body {
       color: #337ab7; }
     .tag_box li span {
       display: none; }
+
+#footer {
+  background-color: transparent;
+  height: 30px; }
+  #footer .container {
+    text-align: center; }
+    #footer .container p {
+      border-top: 1px dashed #5c6a74;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
 
 /*------------------------------------------------------------------
  * [ plugins ] */

@@ -31,7 +31,7 @@
         | {% endunless %}
 
 nav
-    ul.pagination
+    ul.pagination.pagination-sm
         | {% if paginator.previous_page %}
         li
             | {% if paginator.previous_page == 1 %}
@@ -42,25 +42,30 @@ nav
                 i.fa.fa-arrow-left
             | {% endif %}
         | {% else %}
-        li.disabled
-            a: i.fa.fa-arrow-left
+        li.disabled: a: i.fa.fa-arrow-left
         | {% endif %}
-        | {% if paginator.page == 1 %}
+
+        | {% for count in (1..paginator.total_pages) %}
+        | {% if count == 1 %} {% if paginator.page == 1 %}
         li.active
             a 1
         | {% else %}
-        li
-            a(href='/') 1
-        | {% endif %}
-
-        | {% for count in (2..paginator.total_pages) %}
-        | {% if count == paginator.page %}
-        li.active
-            a {{count}}
+        li: a(href='/') 1
+        | {% endif %} {% elsif count == paginator.total_pages %} {% if paginator.page == paginator.total_pages %}
+        li.active: a {{ paginator.page }}
         | {% else %}
-        li
-            a(href='/page{{ count }}') {{ count }}
-        | {% endif %}
+        li: a(href='/page{{ paginator.total_pages }}') {{ paginator.total_pages }}
+        | {% endif %} {% else%} {% if count == paginator.previous_page %} {% if paginator.previous_page != 2 %}
+        li: a ... {% endif %}
+        li: a(href='/page{{ count }}') {{count}}
+        | {% endif %} {% if count == paginator.page %}
+        li.active: a {{count}}
+        | {% endif %} {% if count == paginator.next_page %}
+        li: a(href='/page{{ count }}') {{count}}
+        | {% if forloop.rindex != 2%}
+        li: a ... {% endif %}
+        | {% endif %} {% endif %}
+
         | {% endfor %}
 
         | {% if paginator.next_page %}

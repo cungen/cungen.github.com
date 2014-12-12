@@ -1,5 +1,20 @@
 /*------------------------------------------------------------------
-  [ index ]
+  [ 4.index ]
+
+.wrap-container
+    position: absolute
+    width: 100%
+    height: 100%
+    background: #eeeeee url('../imgs/bg.png') repeat-x
+    .wrap
+        height: 100%
+        background-color: #ffffff
+        margin-bottom: -34px
+        padding-top: 70px
+        padding-bottom: 34px
+        overflow: auto
+        zoom: 1
+        +box-shadow(0 4px 6px 2px rgba(0, 0, 0, .3))
 .tag_box
     display: inline-block
     list-style: none
@@ -17,3 +32,13 @@
             color: $blue
         span
             display: none
+#footer
+    background-color: transparent
+    height: 30px
+    .container
+        text-align: center
+        p
+            border-top: 1px dashed $theme-color2
+            overflow: hidden
+            text-overflow: ellipsis
+            white-space: nowrap

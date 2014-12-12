@@ -1,5 +1,5 @@
 /*------------------------------------------------------------------
-  [ theme ]
+  [ 3. theme ]
 
 @mixin textShadow
     text-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.8)
@@ -9,8 +9,35 @@ html
 body
     height: 100%
 
+a
+    color: $theme-color3
+a:hover, a:focus
+    color: $theme-color1
+
+// title
+h1, h2, h3, h4, h5, h6
+    color: $theme-text-title
+.page-header
+    border-bottom: 1px dashed $theme-color2
+
 // main-nav
-.navbar-nav
+.navbar
+    &.navbar-inverse
+        background-color: $theme-color2
+        border-color: $theme-color3
+        .active>a
+            background-color: $theme-color1
+            &:hover
+                background-color: $theme-color1
+        li>a, a
+            color: $theme-text2
+        .navbar-toggle
+            border-color: transparent
+            &:hover,
+            &:focus
+                background-color: $theme-color1
+        .navbar-collapse
+            border-color: $theme-color3
     li:last-child
         margin-right: 15px
 

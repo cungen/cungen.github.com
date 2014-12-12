@@ -8,6 +8,8 @@ highlighter: pygments
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
+
+
 title: Cungen's Blog
 tagline: A LIFELONG PROCESS
 author:
@@ -19,6 +21,8 @@ author:
 
 # pagination
 paginate: 5
+
+safe: true
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt
@@ -44,3 +48,6 @@ MD:
     tags_path: /tags.html
     atom_path: /atom.xml
     rss_path: /rss.xml
+
+    analytics :
+        provider : cnzz
