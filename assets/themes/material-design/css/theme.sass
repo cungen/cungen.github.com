@@ -16,7 +16,7 @@ a:hover, a:focus
 
 // title
 h1, h2, h3, h4, h5, h6
-    color: $theme-text-title
+    color: map_get($White, Text)
 .page-header
     border-bottom: 1px dashed $theme-color2
 
@@ -30,7 +30,7 @@ h1, h2, h3, h4, h5, h6
             &:hover
                 background-color: $theme-color1
         li>a, a
-            color: $theme-text2
+            color: map_get($Black, Text)
         .navbar-toggle
             border-color: transparent
             &:hover,
@@ -58,7 +58,7 @@ h1, h2, h3, h4, h5, h6
                 right: -4px
                 top: 50%
                 margin-top: -4px
-                background-color: $grey-light
+                background-color: map_get($Grey, 200)
                 width: 8px
                 height: 8px
                 +transform( rotate(45deg) )
@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6
         padding: 10px 15px
     li
         padding: 0
-        border: 1px solid $border-color-grey
+        border: 1px solid map_get($Grey, 400)
         &:first-child
             border-bottom: 0
             +border-radius(4px 4px 0 0)
@@ -127,5 +127,5 @@ h1, h2, h3, h4, h5, h6
     margin-bottom: 20px
 .copyright
     text-align: center
-    color: $grey
+    color: map_get($White, Disable)
     font-size: .8em

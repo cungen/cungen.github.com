@@ -12,7 +12,7 @@
         height: 100%
         width: 0
         margin-left: -1px
-        border-left: 2px solid $blue
+        border-left: 2px solid map_get($Blue, 300)
     .year
         position: relative
         z-index: 99
@@ -24,8 +24,8 @@
         margin-left: -25px
         text-align: center
         +border-radius(100%)
-        +gradient($blue + 15, $blue - 15)
-        +box-shadow(0 0 8px 1px rgba(0, 0, 0, 0.3))
+        +gradient(map_get($Blue, 300), map_get($Blue, 400))
+        +box-shadow(0 0 5px 1px rgba(0, 0, 0, 0.2))
         color: #ffffff
     .month
         position: absolute
@@ -37,15 +37,15 @@
         margin-left: -8px
         overflow: hidden
         +border-radius(100%)
-        +gradient($blue + 15, $blue - 15)
-        +box-shadow(0 0 2px 1px rgba(0, 0, 0, 0.3))
+        +gradient(map_get($Blue, 300), map_get($Blue, 400))
+        +box-shadow(0 0 2px 1px rgba(0, 0, 0, 0.2))
     ul.list-group
         position: relative
         width: 50%
         padding-right: 18px
         .list-group-header
             font-weight: bold
-            color: $grey
+            color: map_get($White, Disable)
             &:after
                 content: ''
                 position: absolute
@@ -53,8 +53,8 @@
                 height: 12px
                 background-color: #ffffff
                 border: 1px solid transparent
-                border-top-color: $border-color-grey
-                border-right-color: $border-color-grey
+                border-top-color: map_get($Grey, 400)
+                border-right-color: map_get($Grey, 400)
                 right: -6px
                 top: 20px
                 z-index: 99
@@ -72,8 +72,8 @@
                 right: auto
                 border-top-color: transparent
                 border-right-color: transparent
-                border-bottom-color: $border-color-grey
-                border-left-color: $border-color-grey
+                border-bottom-color: map_get($Grey, 400)
+                border-left-color: map_get($Grey, 400)
 // media query
 @media screen and (max-width: 640px)
     .timeline
@@ -94,5 +94,5 @@
                     right: auto
                     border-top-color: transparent
                     border-right-color: transparent
-                    border-bottom-color: $border-color-grey
-                    border-left-color: $border-color-grey
+                    border-bottom-color: map_get($Grey, 400)
+                    border-left-color: map_get($Grey, 400)

@@ -21,13 +21,20 @@
                     | {% assign tags_list = post.tags %}
                     | {% include MD/tags_list %}
                 | {% endunless %}
-                span.date.pull-right {{ post.date | date: '%F %R %p' }}
+                span.date.pull-right {{ post.date | date: '%F' }}
         | {% endfor %}
     .col-md-4
         | {% unless site.categories == empty %}
         ul.list-group
+            li.title 分类
             | {% assign categories_list = site.categories %}
             | {% include MD/categories_list %}
+        | {% endunless %}
+        | {% unless site.tags == empty %}
+        ul.list-group
+            li.title 标签
+            | {% assign tags_list = site.tags %}
+            | {% include MD/tags_list %}
         | {% endunless %}
 
 nav

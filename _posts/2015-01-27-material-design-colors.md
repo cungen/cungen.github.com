@@ -1,5 +1,12 @@
-/*------------------------------------------------------------------
-  [ variables ]
+---
+layout: post
+title: "Material design colors"
+description: ""
+category: 
+tags: []
+---
+
+{% highlight css linenos=table %}
 
 $Cyan: (50: #E0F7FA, 100: #B2EBF2, 200: #80DEEA, 300: #4DD0E1, 400: #26C6DA, 500: #00BCD4, 600: #00ACC1, 700: #0097A7, 800: #00838F, 900: #006064, A100: #84FFFF, A200: #18FFFF, A400: #00E5FF, A700: #00B8D4)
 $Pink: (50: #FCE4EC, 100: #F8BBD0, 200: #F48FB1, 300: #F06292, 400: #EC407A, 500: #E91E63, 600: #D81B60, 700: #C2185B, 800: #AD1457, 900: #880E4F, A100: #FF80AB, A200: #FF4081, A400: #F50057, A700: #C51162)
@@ -15,7 +22,5 @@ $Yellow: (50: #FFFDE7, 100: #FFF9C4, 200: #FFF59D, 300: #FFF176, 400: #FFEE58, 5
 $Grey: (50: #FAFAFA, 100: #F5F5F5, 200: #EEEEEE, 300: #E0E0E0, 400: #BDBDBD, 500: #9E9E9E, 600: #757575, 700: #616161, 800: #424242, 900: #212121)
 $Black: (Dividers: rgba(255, 255, 255, .12), Disable: rgba(255, 255, 255, .26), Secondary: rgba(255, 255, 255, .54), Text: rgba(255, 255, 255, .87), 100: #ffffff)
 $White: (Dividers: rgba(0, 0, 0, .12), Disable: rgba(0, 0, 0, .30), Secondary: rgba(0, 0, 0, .70), Text: #000000)
-
-$theme-color1: #74a24c
-$theme-color2: #5c6a74
-$theme-color3: #d47624
+{% endhighlight %}
+{% include MD/setup %}
