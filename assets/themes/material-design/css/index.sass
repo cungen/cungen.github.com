@@ -15,6 +15,53 @@
         padding-top: 70px
         padding-bottom: 34px
         +box-shadow(0 4px 6px 2px rgba(0, 0, 0, .3))
+        .posts
+            .post
+                border: 1px solid map_get($White, Dividers)
+                border-radius: 4px
+                overflow: hidden
+                margin-bottom: 15px
+                .post-heading
+                    overflow: hidden
+                    border-bottom: 1px solid map_get($White, Dividers)
+                    h4
+                        margin: 10px
+                .post-body
+                    padding: 10px
+                .post-footer
+                    padding: 5px 10px
+                    span
+                        display: block
+                        line-height: 20px
+                        height: 20px
+                    ul
+                        border: 0
+                        li
+                            span
+                                display: none
+                            i
+                                color: $theme-color2
+                                line-height: 14px
+                                height: 14px
+                                vertical-align: middle
+                            a
+                                font-size: 14px
+                                line-height: 14px
+                                height: 14px
+                                vertical-align: middle
+        .sidebar
+            .title
+                padding: 10px
+                font-weight: bold
+                color: map_get($White, Disable)
+            li
+                border-color: map_get($White, Dividers)
+                border-top: 0
+                border-bottom-width: 1px
+                &:first-of-type
+                    border-top: 1px solid map_get($White, Dividers)
+                .badge
+                    background-color: $theme-color2
 .tag_box
     display: inline-block
     list-style: none

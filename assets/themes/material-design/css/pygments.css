@@ -1,9 +1,11 @@
 .highlighttable, .highlight {
-  background-color: #f8f8f8;
+  background-color: #f7f7f9;
   table-layout: fixed;
   white-space: nowrap;
   width: 100%;
-  border: 1px solid #cccccc; }
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+  overflow: hidden; }
   .highlighttable .highlight, .highlight .highlight {
     border: 0; }
   .highlighttable .hll, .highlight .hll {
@@ -156,6 +158,7 @@
     border-width: 0; }
   .highlighttable .linenos, .highlight .linenos {
     width: 3em;
+    background-color: #fbfbfc;
     border-right: 1px dashed #cccccc;
     vertical-align: top; }
     .highlighttable .linenos pre, .highlight .linenos pre {

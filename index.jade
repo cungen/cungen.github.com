@@ -5,25 +5,26 @@
 | <!--comment to separate the layout -->
 .row
     .col-md-8
-        | {% for post in paginator.posts %}
-        .panel.panel-default
-            .panel-heading
-                h3.panel-title
-                    a(href='{{ post.url }}') {{ post.title }}
-            .panel-body
-                author {{ post.author | site.author.name }}
+        .posts
+            | {% for post in paginator.posts %}
+            .post
+                .post-heading
+                    h4.post-title
+                        a(href='{{ post.url }}') {{ post.title }}
+                .post-body
+                    author {{ post.author | site.author.name }}
 
-                .content {{ post.content }}
-            .panel-footer.clearfix
-                | {% unless post.tags == empty %}
-                ul.tag_box
-                    li: i.fa.fa-tags.fa-fw
-                    | {% assign tags_list = post.tags %}
-                    | {% include MD/tags_list %}
-                | {% endunless %}
-                span.date.pull-right {{ post.date | date: '%F' }}
-        | {% endfor %}
-    .col-md-4
+                    .content {{ post.description }}
+                .post-footer.clearfix
+                    | {% unless post.tags == empty %}
+                    ul.tag_box
+                        li: i.fa.fa-tags.fa-fw
+                        | {% assign tags_list = post.tags %}
+                        | {% include MD/tags_list %}
+                    | {% endunless %}
+                    span.date.pull-right {{ post.date | date: '%F' }}
+            | {% endfor %}
+    .col-md-4.sidebar
         | {% unless site.categories == empty %}
         ul.list-group
             li.title 分类

@@ -12,7 +12,7 @@
         height: 100%
         width: 0
         margin-left: -1px
-        border-left: 2px solid map_get($Blue, 300)
+        border-left: 2px solid $theme-color2
     .year
         position: relative
         z-index: 99
@@ -23,9 +23,8 @@
         font-size: 17px
         margin-left: -25px
         text-align: center
+        background-color: $theme-color2
         +border-radius(100%)
-        +gradient(map_get($Blue, 300), map_get($Blue, 400))
-        +box-shadow(0 0 5px 1px rgba(0, 0, 0, 0.2))
         color: #ffffff
     .month
         position: absolute
@@ -36,9 +35,8 @@
         text-indent: -100px
         margin-left: -8px
         overflow: hidden
+        background-color: $theme-color2
         +border-radius(100%)
-        +gradient(map_get($Blue, 300), map_get($Blue, 400))
-        +box-shadow(0 0 2px 1px rgba(0, 0, 0, 0.2))
     ul.list-group
         position: relative
         width: 50%

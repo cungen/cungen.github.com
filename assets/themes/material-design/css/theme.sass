@@ -108,9 +108,11 @@ h1, h2, h3, h4, h5, h6
         padding: 10px 15px
     li
         padding: 0
-        border: 1px solid map_get($Grey, 400)
+        border-left: 1px solid map_get($White, Dividers)
+        border-right: 1px solid map_get($White, Dividers)
+        border-bottom: 1px solid map_get($White, Dividers)
         &:first-child
-            border-bottom: 0
+            border-top: 1px solid map_get($White, Dividers)
             +border-radius(4px 4px 0 0)
         &:last-child
             +border-radius(0 0 4px 4px)

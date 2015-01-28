@@ -16,6 +16,7 @@ ul.breadcrumb
     .col-xs-12
         .date
             span {{ page.date | date_to_long_string }}
+        .description {{ page.description }}
         .content {{ content }}
 
         | {% unless page.categories == empty %}
